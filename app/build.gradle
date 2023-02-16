@@ -1,6 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+//hilt
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+
+    //safe args
 }
 
 android {
@@ -32,6 +37,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
 }
 
@@ -48,4 +54,41 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    //gson -> for handling json data
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    //retrofit -> turns http api to java interface simplify the request part of api
+
+    // Retrofit -> Help you simplify the request part of API -> con: you cannot set the media directly to your views/UI
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+
+    //okhttp-> helps u with the client  and interceptors and timeouts and security
+    // modern way to exchange data between server/client -> efficiency
+    // define a BOM and its version
+    // define any required OkHttp artifacts without version
+
+    // OkHttp -> Helps you with client and interceptors and timeouts and security
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.6'
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6"//gets details in logs
+
+    //hilt
+    implementation 'com.google.dagger:hilt-android:2.45'
+    kapt 'com.google.dagger:hilt-compiler:2.45'
+
+    // For instrumentation tests
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.45'
+    kaptAndroidTest 'com.google.dagger:hilt-compiler:2.45'
+
+    // For local unit tests
+    testImplementation 'com.google.dagger:hilt-android-testing:2.45'
+    kaptTest 'com.google.dagger:hilt-compiler:2.45'
+
+//Glide -> helps to set the media into ui/views
+    // Glide -> Helps to set the media into UI/Views
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    kapt 'com.github.bumptech.glide:compiler:4.13.2'
+
+
 }

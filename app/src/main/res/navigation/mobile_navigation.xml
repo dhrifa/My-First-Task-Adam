@@ -3,18 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_people">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_people"
         android:name="com.example.myfirsttaskadam.ui.people.PeopleFragment"
         android:label="@string/title_people"
-        tools:layout="@layout/fragment_people" />
+        tools:layout="@layout/fragment_people" >
+        <action
+            android:id="@+id/action_navigation_people_to_peopleDetailFragment"
+            app:destination="@id/peopleDetailFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_rooms"
         android:name="com.example.myfirsttaskadam.ui.room.RoomFragment"
         android:label="@string/title_room"
         tools:layout="@layout/fragment_room" />
+    <fragment
+        android:id="@+id/peopleDetailFragment"
+        android:name="com.example.myfirsttaskadam.ui.people.PeopleDetailFragment"
+        android:label="PeopleDetailFragment" />
 
 </navigation>
