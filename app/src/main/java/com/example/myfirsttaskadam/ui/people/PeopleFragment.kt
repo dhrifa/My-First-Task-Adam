@@ -40,7 +40,6 @@ class PeopleFragment : Fragment() {
         _binding = FragmentPeopleBinding.inflate(inflater, container, false)
 
         binding.let { ui ->
-            val textView: TextView = ui.textHome
             viewModel.peopleList.observe(viewLifecycleOwner) {
                 when (it) {
                     is NetworkResult.Loading -> {
@@ -51,7 +50,6 @@ class PeopleFragment : Fragment() {
                         initView(it.data)
                     }
                     is NetworkResult.Error -> {
-                        textView.text = it.message
                         Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -65,8 +63,8 @@ class PeopleFragment : Fragment() {
         data?.let {
             binding.rvPeople.layoutManager = LinearLayoutManager(context)
             binding.rvPeople.adapter = PeopleAdapter(data) {
-                println(it)
-                Toast.makeText(context, "${it.firstName} clicked!", Toast.LENGTH_LONG).show()
+                viewModel.setSelectedPeopleIndex(it)
+                Toast.makeText(context, "${it.firstName} is clicked!", Toast.LENGTH_LONG).show()
                 findNavController().navigate(R.id.action_navigation_people_to_peopleDetailFragment)
             }
 

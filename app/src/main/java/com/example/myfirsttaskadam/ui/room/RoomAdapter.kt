@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfirsttaskadam.data.model.room.RoomModelItemModel
 import com.example.myfirsttaskadam.databinding.RoomItemBinding
+import com.example.myfirsttaskadam.util.DateTimeUtil.toDate
 
 class RoomAdapter(
     val data: ArrayList<RoomModelItemModel>,
@@ -19,7 +20,7 @@ class RoomAdapter(
             //data ->roomItemdata from initUI
             // ui-> roomItemview from viewholder
             roomItem.tvIdRoom.text = "Room number ${roomItemData.id}"
-            roomItem.tvDateCreat.text = roomItemData.createdAt
+            roomItem.tvDateCreat.text = roomItemData.createdAt?.toDate()
 
             if (roomItemData.isOccupied == true) {
                 roomItem.ivOccupied.visibility = View.VISIBLE

@@ -23,6 +23,10 @@
     <fragment
         android:id="@+id/peopleDetailFragment"
         android:name="com.example.myfirsttaskadam.ui.people.PeopleDetailFragment"
-        android:label="PeopleDetailFragment" />
+        android:label="Person Detail" >
+        <action
+            android:id="@+id/action_peopleDetailFragment_to_navigation_people"
+            app:destination="@id/navigation_people" />
+    </fragment>
 
 </navigation>

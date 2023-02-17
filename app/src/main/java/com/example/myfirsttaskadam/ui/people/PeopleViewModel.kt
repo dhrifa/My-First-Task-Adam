@@ -20,8 +20,9 @@ class PeopleViewModel @Inject constructor(
     private var _peopleList = MutableLiveData<NetworkResult<PeopleModel>>()
     val peopleList: LiveData<NetworkResult<PeopleModel>> = _peopleList
 
-    private var _selectedPeople = MutableLiveData<PeopleItemModel>()
-    val selectedPeople: LiveData<PeopleItemModel> = _selectedPeople
+
+    private var _selectedPeopleIndex = MutableLiveData<PeopleItemModel/*Int*/>()
+    val selectedPeopleIndex: LiveData<PeopleItemModel/*Int*/> = _selectedPeopleIndex
 
 //    init {
 //        getPeopleList()
@@ -40,6 +41,12 @@ class PeopleViewModel @Inject constructor(
                 _peopleList.value = NetworkResult.Error(result.message())
             }
         }
+    }
+
+
+    fun setSelectedPeopleIndex(selectedPeople:PeopleItemModel/* index: Int*/){
+        _selectedPeopleIndex.value = selectedPeople
+
     }
 }
 

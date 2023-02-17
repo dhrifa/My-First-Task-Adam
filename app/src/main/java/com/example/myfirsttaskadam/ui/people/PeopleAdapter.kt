@@ -7,27 +7,24 @@ import com.bumptech.glide.Glide
 import com.example.myfirsttaskadam.R
 import com.example.myfirsttaskadam.data.model.people.PeopleItemModel
 import com.example.myfirsttaskadam.databinding.PeopleItemBinding
+import com.example.myfirsttaskadam.util.MediaLoading.loadingImage
 
 class PeopleAdapter(
     val data: ArrayList<PeopleItemModel>,
-    val function: (peopleItem: PeopleItemModel) -> Unit
+    val function: (peopleItem: PeopleItemModel/*, position: Int*/) -> Unit
 ) : RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
 
     inner class ViewHolder(val view: PeopleItemBinding) : RecyclerView.ViewHolder(view.root) {
-        fun initUi(peopleItem: PeopleItemModel) {
+        fun initUi(peopleItem: PeopleItemModel, position: Int) {
             //data -> peopleitem
             //UI-> view
             view.tvTitle.text = "${peopleItem.firstName} ${peopleItem.lastName}"
             view.tvDesc.text = peopleItem.jobtitle
             with(itemView) {
-                Glide.with(context)
-                    .load(peopleItem.avatar)
-                    .placeholder(R.drawable.animate_loading)
-                    .centerCrop()
-                    .into(view.ivProfilePic)
+                view.ivProfilePic.loadingImage(context,peopleItem.avatar)
             }
             view.ivProfilePic.setOnClickListener {
-                function.invoke(peopleItem)
+                function.invoke(peopleItem/*, position*/)
             }
         }
 
@@ -41,7 +38,7 @@ class PeopleAdapter(
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.initUi(data[position])
+        holder.initUi(data[position], position)
     }
 
     override fun getItemCount() = data.size

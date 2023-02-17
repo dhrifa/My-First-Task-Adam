@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myfirsttaskadam.data.model.room.RoomModel
 import com.example.myfirsttaskadam.data.model.room.RoomModelItemModel
 import com.example.myfirsttaskadam.databinding.FragmentRoomBinding
@@ -55,6 +57,7 @@ class RoomFragment : Fragment() {
 
     private fun initView(data: RoomModel?) {
         data?.let {
+//            binding.rvRoom.layoutManager = GridLayoutManager(requireContext(), 2)
             binding.rvRoom.adapter = RoomAdapter(data) {}
         }
     }
