@@ -1,20 +1,11 @@
 package com.example.myfirsttaskadam.ui.people
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
-import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
-import com.example.myfirsttaskadam.R
 import com.example.myfirsttaskadam.databinding.FragmentPeopleDetailBinding
 import com.example.myfirsttaskadam.util.MediaLoading.loadingImage
 
